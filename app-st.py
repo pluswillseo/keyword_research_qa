@@ -23,6 +23,10 @@ if uploaded_file is not None:
         time.sleep(0.1)
     my_bar.progress(percent_complete + 1)
     
+    with st.spinner('Wait for it...'):
+        time.sleep(5)
+    st.success('Done!')
+    
     import io
     csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"), delimiter=",")
 
