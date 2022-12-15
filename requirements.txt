@@ -1,2 +1,4 @@
 fuzzywuzzy
 spellchecker
+spellchecker.core
+indexer
