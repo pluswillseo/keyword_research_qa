@@ -101,7 +101,7 @@ if uploaded_file is not None:
 # iterate over the keywords and check for any misspellings or special characters
     for keyword in keywords:
     # split the keyword into individual words
-        words = keyword[0].split()
+        words = keyword.split()
     
     # iterate over the words and check for any misspellings or special characters
         for word in words:
@@ -126,12 +126,3 @@ if uploaded_file is not None:
 
     st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
     
-    my_bar = st.progress(0)
-
-    for percent_complete in range(100):
-        time.sleep(0.1)
-    my_bar.progress(percent_complete + 1)
-    
-    with st.spinner('Wait for it...'):
-        time.sleep(5)
-    st.success('Done!')
