@@ -106,10 +106,10 @@ if uploaded_file is not None:
     # iterate over the words and check for any misspellings or special characters
         for word in words:
             # skip any words that are in the ignore list
-            if word in ignore_list or spell_checker.correction(word) == word:
+            if word in ignore_list:
                 continue
         
-            if len(spell_checker.unknown([word])) > 0 or re.search(regex, word):
+            if len(spell_checker.correction(word)) =! word or re.search(regex, word):
                 df.loc[df['Keyword'] == keyword, 'Misspelling'] = "Potential misspelling or error"
                 break
 
