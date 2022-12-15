@@ -5,6 +5,8 @@ import streamlit as st
 import pandas as pd
 from spellchecker import SpellChecker
 import re
+import time
+import io
 
 st.title("Keyword Research Fuzzy Lookup & QA")
 
@@ -14,6 +16,13 @@ sim_score = st.slider("What similarity score do you want to use for your dataset
 # Read the input csv file
 uploaded_file = st.file_uploader("Choose a CSV file to process", type='csv')
 if uploaded_file is not None:
+    
+    my_bar = st.progress(0)
+
+    for percent_complete in range(100):
+        time.sleep(0.1)
+    my_bar.progress(percent_complete + 1)
+    
     import io
     csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"), delimiter=",")
 
@@ -115,10 +124,6 @@ if uploaded_file is not None:
 #with open('output.csv', 'w', newline="") as csvfile:
 #   writer = csv.writer(csvfile)
 #   writer.writerows(keywords)
-
-    with st.spinner('Wait for it...'):
-        time.sleep(5)
-    st.success('Done!')
 
     # Display the DataFrame as a table
     st.dataframe(df)
