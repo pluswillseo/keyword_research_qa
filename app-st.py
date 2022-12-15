@@ -17,16 +17,6 @@ sim_score = st.slider("What similarity score do you want to use for your dataset
 uploaded_file = st.file_uploader("Choose a CSV file with keywords and SV to process - this should have keywords in first column, and search volume in the second", type='csv')
 if uploaded_file is not None:
     
-    my_bar = st.progress(0)
-
-    for percent_complete in range(100):
-        time.sleep(0.1)
-    my_bar.progress(percent_complete + 1)
-    
-    with st.spinner('Wait for it...'):
-        time.sleep(5)
-    st.success('Done!')
-    
     import io
     csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"), delimiter=",")
 
@@ -135,3 +125,13 @@ if uploaded_file is not None:
     csv = df.to_csv(index=False)
 
     st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
+    
+    my_bar = st.progress(0)
+
+    for percent_complete in range(100):
+        time.sleep(0.1)
+    my_bar.progress(percent_complete + 1)
+    
+    with st.spinner('Wait for it...'):
+        time.sleep(5)
+    st.success('Done!')
