@@ -117,7 +117,7 @@ if uploaded_file is not None:
 #   writer.writerows(keywords)
 
     with st.spinner('Wait for it...'):
-    time.sleep(5)
+        time.sleep(5)
     st.success('Done!')
 
     # Display the DataFrame as a table
