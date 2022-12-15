@@ -19,7 +19,10 @@ if uploaded_file is not None:
     
     import io
     csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"), delimiter=",")
-
+    
+    #skip first row
+    next(csv_reader)
+    
     #create a list to store the rows
     rows = []
 
