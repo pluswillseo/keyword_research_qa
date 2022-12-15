@@ -96,7 +96,7 @@ if uploaded_file is not None:
     regex = r'[^A-Za-z0-9 ]'
 
 # define a list of words to ignore (e.g. brand names, product names, etc.)
-    ignore_list = ignore_words.split(", ")
+    ignore_list = [k.strip() for k in ingore_words.split(",")]
 
 # iterate over the keywords and check for any misspellings or special characters
     for keyword in keywords:
