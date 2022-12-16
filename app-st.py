@@ -11,7 +11,7 @@ import io
 st.title("Keyword Research Fuzzy Lookup & Quality Assurance Review")
 
 st.write("Utilise this document to complete the following:")
-st.write("👉 Find near duplicate keywords that have the same search volume (e.g. "shoes" and "shoe") - if they have the same search volume they're likely grouped and therefore keeping both will be inflating your data")
+st.write("👉 Find near duplicate keywords that have the same search volume (e.g. 'shoes' and 'shoe') - if they have the same search volume they're likely grouped and therefore keeping both will be inflating your data")
 st.write("👉 Misspellings - sometimes the smallest errors are the hardest - working out somehting is spelled wrong (see what I did there?)")
 st.write("👉 Special characters - this will highlight as a 'misspelling' if it sees a special character used")
 
