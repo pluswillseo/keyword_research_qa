@@ -16,13 +16,16 @@ st.write("👉 Misspellings - sometimes the smallest errors are the hardest - wo
 st.write("👉 Special characters - this will highlight as a 'misspelling' if it sees a special character used")
 
 st.text("")
+st.text("")
 
 ignore_words = st.text_input("Add all words you want to ignore as part of the spell check, such as branded terms, product lines, etc.")
 
 st.text("")
+st.text("")
 
 sim_score = st.slider("What similarity score do you want to use for your dataset? The default is 96, however you can adapt as you see necessary between 90 and 100", min_value=90, max_value=100, value=96)
 
+st.text("")
 st.text("")
 
 # Read the input csv file
