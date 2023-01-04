@@ -13,8 +13,10 @@ st.title("Keyword Research Quality Assurance Review")
 st.markdown("""
 <style>
 .big-font {
-    font-size:30px !important;
+    font-size:20px !important;
 }
+.medium-font {
+    font-size:10px !important;
 </style>
 """, unsafe_allow_html=True)
 
