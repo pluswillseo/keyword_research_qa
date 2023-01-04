@@ -221,6 +221,6 @@ if uploaded_file is not None:
 
         #csv = df.to_csv(index=False)
    
-st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
+    st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
     
     
