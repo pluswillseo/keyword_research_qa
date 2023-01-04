@@ -37,8 +37,11 @@ st.text("")
 dl = st.radio(
         "What delimiter are you using?",
         (",", ";", "\t"),
-        index=0
+        index=0,
+        horizontal=True
     )
+
+st.text("")
 
 # Read the input csv file
 uploaded_file = st.file_uploader("Choose a CSV file with keywords and SV to process - this should have keywords in first column, and search volume in the second", type='csv')
