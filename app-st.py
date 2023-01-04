@@ -24,8 +24,8 @@ st.markdown("""
 
 st.markdown('<p class="big-font">Utilise this application to help you review or conduct a keyword research and help you complete the following:<p>', unsafe_allow_html=True)
 st.write("👉 **Find near duplicate keywords that have the same search volume** (e.g. 'shoes' and 'shoe') - if they have the same search volume they're likely grouped and therefore keeping both will be inflating your data")
-st.write("👉 Misspellings - sometimes the smallest errors are the hardest - working out somehting is spelled wrong (see what I did there?) - this app will highlight potential misspellings")
-st.write("👉 Special characters - this will highlight as a 'misspelling' if it sees a special character used")
+st.write("👉 Misspellings - sometimes the smallest errors are the hardest - working out somehting is spelled wrong (see what I did there?) - **this app will highlight potential misspellings**")
+st.write("👉 **Special characters - this will highlight as a 'misspelling' if it sees a special character used**")
 
 st.write("How to use: ")
 st.write("1. Input a CSV with your Keyword and Search Volume columns. This should then populate into a table below.")
