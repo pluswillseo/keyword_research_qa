@@ -71,7 +71,8 @@ if uploaded_file is not None:
         
     csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"), delimiter=dl)
     
-    st.success('Uploaded CSV!')
+    placeholder = st.empty()
+    placeholder.success('Uploaded CSV! Now to group keywords by Search Volume...')
 
     #skip first row
     next(csv_reader)
@@ -119,7 +120,7 @@ if uploaded_file is not None:
                     # Add the other keyword to the list of similar keywords for the keyword
                     results[keyword].append(other_keyword)
     
-    st.success('Created groupings by search volume!')
+    placeholder.success('Created groupings by search volume! Now to find the keywords that hit the similarity threshold in each grouping...')
 
     # Create a list of rows for the data frame
     data = []
@@ -142,7 +143,7 @@ if uploaded_file is not None:
     # Create a pandas DataFrame to store the results
     df = pd.DataFrame(data, columns=["Keyword", "Search Volume", "Similar Keywords"])
     
-    st.success('Found the similar keywords within the search volume groupings!')
+    placeholder.success('Found the similar keywords within the search volume groupings! Now to focus on misspellings and special characters...')
 
     keywords = df['Keyword']
 
@@ -172,15 +173,15 @@ if uploaded_file is not None:
                 df.loc[df['Keyword'] == keyword, 'Misspelling or special character'] = "Potential misspelling or error"
                 break
 
-    st.success('Found any potential misspellings or special characters that are not already listed in your ignore list!')
+    placeholder.success('Found any potential misspellings or special characters that are not already listed in your ignore list! Lets put together the final table...')
 
 # open the CSV file and write the updated keywords
 #with open('output.csv', 'w', newline="") as csvfile:
 #   writer = csv.writer(csvfile)
 #   writer.writerows(keywords)
     
-    st.empty()
-    st.success('Complete the table!')
+
+    placeholder.success('Completed the table!')
 
     # Display the DataFrame as a table
     st.dataframe(df)
