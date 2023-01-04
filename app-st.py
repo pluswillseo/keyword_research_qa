@@ -68,11 +68,11 @@ uploaded_file = st.file_uploader("Choose a CSV file with keywords and SV to proc
 if uploaded_file is not None:
     
     import io
-    
-    pgr = st.progress(10)
-    
+        
     csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"), delimiter=dl)
     
+    st.success('Uploaded CSV!')
+
     #skip first row
     next(csv_reader)
     
@@ -96,9 +96,7 @@ if uploaded_file is not None:
 
     # Create a dictionary to store the results
     results = {}
-    
-    pgr = st.progress(40)
-    
+        
     # Iterate over the groups
     for search_volume, keywords in groups.items():
         # Iterate over the keywords in each group
@@ -120,12 +118,12 @@ if uploaded_file is not None:
 
                     # Add the other keyword to the list of similar keywords for the keyword
                     results[keyword].append(other_keyword)
+    
+    st.success('Created groupings by search volume!')
 
     # Create a list of rows for the data frame
     data = []
     
-    pgr = st.progress(70)
-
     # Iterate over the rows in the input csv file
     for row in rows:
         # Get the keyword and search volume from the row
@@ -144,6 +142,8 @@ if uploaded_file is not None:
     # Create a pandas DataFrame to store the results
     df = pd.DataFrame(data, columns=["Keyword", "Search Volume", "Similar Keywords"])
     
+    st.success('Found the similar keywords within the search volume groupings!')
+
     keywords = df['Keyword']
 
     df['Misspelling or special character'] = ""
@@ -153,9 +153,7 @@ if uploaded_file is not None:
 
     # define a regular expression to match any special characters
     regex = r'[^A-Za-z0-9 ]'
-    
-    pgr = st.progress(80)
-    
+        
 # define a list of words to ignore (e.g. brand names, product names, etc.)
     ignore_list = [k.strip() for k in ignore_words.split(",")]
 
@@ -174,13 +172,15 @@ if uploaded_file is not None:
                 df.loc[df['Keyword'] == keyword, 'Misspelling or special character'] = "Potential misspelling or error"
                 break
 
+    st.success('Found any potential misspellings or special characters that are not already listed in your ignore list!')
 
 # open the CSV file and write the updated keywords
 #with open('output.csv', 'w', newline="") as csvfile:
 #   writer = csv.writer(csvfile)
 #   writer.writerows(keywords)
     
-    pgr = st.progress(100)
+    st.empty()
+    st.success('Complete the table!')
 
     # Display the DataFrame as a table
     st.dataframe(df)
