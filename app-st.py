@@ -66,11 +66,12 @@ st.text("")
 uploaded_file = st.file_uploader("Choose a CSV file with keywords and SV to process - this should have keywords in first column, and search volume in the second", type='csv')
 
 if uploaded_file is not None:
+    st.spinner('Wait for it...the datatable is currently being populated')
+
+if uploaded_file is not None:
     
     import io
-    
-    st.spinner('Wait for it...the datatable is currently being populated')
-   
+       
     csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"), delimiter=dl)
     
     #skip first row
