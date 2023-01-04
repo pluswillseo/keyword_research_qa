@@ -69,7 +69,7 @@ if uploaded_file is not None:
     
     import io
     
-    st.progress(10)
+    pgr = st.progress(10)
     
     csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"), delimiter=dl)
     
@@ -97,7 +97,7 @@ if uploaded_file is not None:
     # Create a dictionary to store the results
     results = {}
     
-    st.progress(40)
+    pgr = st.progress(40)
     
     # Iterate over the groups
     for search_volume, keywords in groups.items():
@@ -124,7 +124,7 @@ if uploaded_file is not None:
     # Create a list of rows for the data frame
     data = []
     
-    st.progress(70)
+    pgr = st.progress(70)
 
     # Iterate over the rows in the input csv file
     for row in rows:
@@ -154,7 +154,7 @@ if uploaded_file is not None:
     # define a regular expression to match any special characters
     regex = r'[^A-Za-z0-9 ]'
     
-    st.progress(80)
+    pgr = st.progress(80)
     
 # define a list of words to ignore (e.g. brand names, product names, etc.)
     ignore_list = [k.strip() for k in ignore_words.split(",")]
@@ -180,10 +180,7 @@ if uploaded_file is not None:
 #   writer = csv.writer(csvfile)
 #   writer.writerows(keywords)
     
-    st.progress(100)
-    
-    # Highlight function done
-    st.success('Done!')
+    pgr = st.progress(100)
 
     # Display the DataFrame as a table
     st.dataframe(df)
