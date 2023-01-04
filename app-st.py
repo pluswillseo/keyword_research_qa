@@ -36,7 +36,7 @@ st.text("")
 
 dl = st.radio(
         "What delimiter are you using?",
-        (",", ";", "\t"),
+        (",", ";", "\t", "|"),
         index=0,
         horizontal=True
     )
