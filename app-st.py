@@ -8,6 +8,8 @@ import re
 import time
 import io
 
+st.set_page_config(layout="wide")
+
 st.title("Keyword Research Quality Assurance Review")
 
 st.markdown("""
