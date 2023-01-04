@@ -64,6 +64,9 @@ st.text("")
 
 # Read the input csv file
 uploaded_file = st.file_uploader("Choose a CSV file with keywords and SV to process - this should have keywords in first column, and search volume in the second", type='csv')
+with st.spinner('Wait for it...'):
+    time.sleep(5)
+st.success('Done!')
 if uploaded_file is not None:
     
     import io
