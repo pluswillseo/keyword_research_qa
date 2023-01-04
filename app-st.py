@@ -8,12 +8,14 @@ import re
 import time
 import io
 
-st.title("Keyword Research Fuzzy Lookup & Quality Assurance Review")
+st.title("Keyword Research Quality Assurance Review")
 
 st.write("Utilise this application to help you review or conduct a keyword research and help you complete the following:")
 st.write("👉 Find near duplicate keywords that have the same search volume (e.g. 'shoes' and 'shoe') - if they have the same search volume they're likely grouped and therefore keeping both will be inflating your data")
 st.write("👉 Misspellings - sometimes the smallest errors are the hardest - working out somehting is spelled wrong (see what I did there?)")
 st.write("👉 Special characters - this will highlight as a 'misspelling' if it sees a special character used")
+
+st.write("How to use: input a CSV with your Keyword and Search Volume columns. This should then populate into a table below. You can then use the similarity threshold to determine how similar you want the keywords to be that are listed. Also - ensure that any branded or product names (or anything you want to be excluded from spellcheck) are listed in the ignore list, using commas between each. Once your happy, export the table below!")
 
 st.text("")
 st.text("")
