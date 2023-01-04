@@ -8,7 +8,7 @@ import re
 import time
 import io
 
-st.set_page_config(page_title="Keyword QA Tool | Fix Near Duplicates & Misspellings", layout="centered", initial_sidebar_state="auto")
+st.set_page_config(page_title="Keyword QA Tool | Fix Near Duplicates & Misspellings", layout="wide", initial_sidebar_state="auto")
 
 st.title("Keyword Research Quality Assurance Review")
 
