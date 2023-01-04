@@ -70,7 +70,7 @@ if uploaded_file is not None:
     import io
     
     with st.spinner('Wait for it...'):
-    time.sleep(5)
+        time.sleep(5)
     
     csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"), delimiter=dl)
     
