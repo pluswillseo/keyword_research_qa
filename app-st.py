@@ -204,7 +204,7 @@ else:
 # iterate over the rows in the DataFrame
     for index, row in df.iterrows():
         # check if the fruit column contains any items from the list
-        if any(item in row['Categories'] for item in selected_categories):
+        if any(item in row['Misspelling or special character'] for item in selected_categories):
             # if it does, append the row to the filtered_rows list
             filtered_rows.append(row)
             
