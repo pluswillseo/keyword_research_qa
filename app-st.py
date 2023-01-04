@@ -34,9 +34,10 @@ sim_score = st.slider("What similarity score do you want to use for your dataset
 st.text("")
 st.text("")
 
-dl = st.selectbox(
+dl = st.radio(
         "What delimiter are you using?",
         (",", ";", "\t"),
+        index=0
     )
 
 # Read the input csv file
