@@ -66,9 +66,6 @@ st.text("")
 uploaded_file = st.file_uploader("Choose a CSV file with keywords and SV to process - this should have keywords in first column, and search volume in the second", type='csv')
 
 if uploaded_file is not None:
-    st.spinner('Wait for it...the datatable is currently being populated')
-
-if uploaded_file is not None:
     
     import io
        
@@ -186,3 +183,6 @@ if uploaded_file is not None:
    
     st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
     
+if uploaded_file is not None:
+    if st.dataframe is None:
+        st.spinner('Wait for it...the datatable is currently being populated')
