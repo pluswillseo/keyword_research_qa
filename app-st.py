@@ -17,6 +17,10 @@ st.write("👉 Special characters - this will highlight as a 'misspelling' if it
 
 st.write("How to use: input a CSV with your Keyword and Search Volume columns. This should then populate into a table below. You can then use the similarity threshold to determine how similar you want the keywords to be that are listed. Also - ensure that any branded or product names (or anything you want to be excluded from spellcheck) are listed in the ignore list, using commas between each. Once your happy, export the table below!")
 
+st.write("Important notes:")
+st.write("- Please save csv as CSV UTF-8 (delimited)")
+st.write("- If you have a list of keywords in another language other than english, the misspellings column will not be accurate, but you can still use the similarity column")
+
 st.text("")
 st.text("")
 
