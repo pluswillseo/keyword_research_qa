@@ -41,6 +41,8 @@ dl = st.radio(
         horizontal=True
     )
 
+st.write('The current selected delimiter is', dl)
+
 st.text("")
 
 # Read the input csv file
