@@ -34,9 +34,9 @@ st.write("3. Ensure that any branded or product names (or anything you want to b
 st.write("4. Select the desired delimiter - this is set to default ","")
 st.write("5. Once your happy and the table has populated below, export the table below!")
 
-st.write("Important notes:")
-st.write("- Please save csv as CSV UTF-8 (delimited) with column headers (Keywords and Search Volume) as the first row is ignored")
-st.write("- If you have a list of keywords in another language other than english, the misspellings column will not be accurate, but you can still use the similarity column")
+st.write("**Important notes:**")
+st.write("**- Please save csv as CSV UTF-8 (delimited) with column headers (Keywords and Search Volume) as the first row is ignored**")
+st.write("**- If you have a list of keywords in another language other than english, the misspellings column will not be accurate, but you can still use the similarity column**")
 
 st.text("")
 st.text("")
