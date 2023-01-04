@@ -100,7 +100,7 @@ if uploaded_file is not None:
     # Create a dictionary to store the results
     results = {}
     placeholder.progress(40)
-        
+    st.success("Completed loading and grouping keywords by search volume. Now looking for similar keywords in each grouping...this can take a while...")    
     # Iterate over the groups
     for search_volume, keywords in groups.items():
         # Iterate over the keywords in each group
@@ -185,7 +185,7 @@ if uploaded_file is not None:
 #   writer.writerows(keywords)
     
     placeholder.progress(100)
-    st.success('Completed the table!')
+    st.empty().success('Completed the table!')
 
     # Display the DataFrame as a table
     st.dataframe(df)
