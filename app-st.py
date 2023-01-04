@@ -187,10 +187,35 @@ if uploaded_file is not None:
     placeholder.progress(100)
     st.empty().success('Completed the table!')
 
-    # Display the DataFrame as a table
-    st.dataframe(df)
-        
+# Add a sidebar to the app
+st.sidebar.title("Filter misspellings")
+
+# Add a filter to the sidebar that allows users to select multiple categories
+selected_categories = st.sidebar.multiselect("Select categories to filter by:", ["", "Potential misspelling or error"])
+
+if selected_categories == []:   # & filter_word == []:
+    st.table(df)
     csv = df.to_csv(index=False)
+else:
+    # Filter the table by the selected categories
+    # create an empty list to store the rows that match the filter criteria
+    filtered_rows = []
+
+# iterate over the rows in the DataFrame
+    for index, row in df.iterrows():
+        # check if the fruit column contains any items from the list
+        if any(item in row['Categories'] for item in selected_categories):
+            # if it does, append the row to the filtered_rows list
+            filtered_rows.append(row)
+            
+# create a new DataFrame using the filtered rows
+            filtered_df = pd.DataFrame(filtered_rows)
+
+    # Display the DataFrame as a table
+    #st.dataframe(df)
+        
+    #csv = df.to_csv(index=False)
    
-    st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
+st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
+    
     
