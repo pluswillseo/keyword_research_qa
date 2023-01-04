@@ -34,12 +34,17 @@ sim_score = st.slider("What similarity score do you want to use for your dataset
 st.text("")
 st.text("")
 
+dl = st.selectbox(
+        "What delimiter are you using?",
+        (",", ";", "\t"),
+    )
+
 # Read the input csv file
 uploaded_file = st.file_uploader("Choose a CSV file with keywords and SV to process - this should have keywords in first column, and search volume in the second", type='csv')
 if uploaded_file is not None:
     
     import io
-    csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"))
+    csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"), delimiter=dl)
     
     #skip first row
     next(csv_reader)
