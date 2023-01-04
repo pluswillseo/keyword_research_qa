@@ -41,7 +41,7 @@ dl = st.radio(
         horizontal=True
     )
 
-st.write('The current selected delimiter is', dl)
+st.write('The current selected delimiter is - ', dl)
 
 st.text("")
 
