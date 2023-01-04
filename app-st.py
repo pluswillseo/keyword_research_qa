@@ -39,7 +39,7 @@ uploaded_file = st.file_uploader("Choose a CSV file with keywords and SV to proc
 if uploaded_file is not None:
     
     import io
-    csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"), delimiter=",")
+    csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"))
     
     #skip first row
     next(csv_reader)
