@@ -64,12 +64,14 @@ st.text("")
 
 # Read the input csv file
 uploaded_file = st.file_uploader("Choose a CSV file with keywords and SV to process - this should have keywords in first column, and search volume in the second", type='csv')
-with st.spinner('Wait for it...'):
-    time.sleep(5)
-st.success('Done!')
+
 if uploaded_file is not None:
     
     import io
+    
+    with st.spinner('Wait for it...'):
+    time.sleep(5)
+    
     csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"), delimiter=dl)
     
     #skip first row
@@ -176,8 +178,8 @@ if uploaded_file is not None:
 
     # Display the DataFrame as a table
     st.dataframe(df)
-
+    st.success('Done!')
     csv = df.to_csv(index=False)
-
+   
     st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
     
