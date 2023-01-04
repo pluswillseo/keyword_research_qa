@@ -167,7 +167,7 @@ if uploaded_file is not None:
                 continue
         
             if len(spell_checker.unknown([word])) > 0 or re.search(regex, word):
-                df.loc[df['Keyword'] == keyword, 'Misspelling'] = "Potential misspelling or error"
+                df.loc[df['Keyword'] == keyword, 'Misspelling or special character'] = "Potential misspelling or error"
                 break
 
 
