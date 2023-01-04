@@ -69,9 +69,8 @@ if uploaded_file is not None:
     
     import io
     
-    with st.spinner('Wait for it...the datatable is currently being populated'):
-        time.sleep(5)
-    
+    st.spinner('Wait for it...the datatable is currently being populated')
+   
     csv_reader = csv.reader(io.TextIOWrapper(uploaded_file, encoding="utf-8"), delimiter=dl)
     
     #skip first row
@@ -181,7 +180,7 @@ if uploaded_file is not None:
 
     # Display the DataFrame as a table
     st.dataframe(df)
-
+        
     csv = df.to_csv(index=False)
    
     st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
