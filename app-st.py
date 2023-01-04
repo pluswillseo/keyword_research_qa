@@ -144,7 +144,7 @@ if uploaded_file is not None:
     
     keywords = df['Keyword']
 
-    df['Misspelling'] = ""
+    df['Misspelling or special character'] = ""
 
     # initialize the spell checker
     spell_checker = SpellChecker()
