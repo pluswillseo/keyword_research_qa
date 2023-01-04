@@ -26,7 +26,11 @@ st.write("👉 Misspellings - sometimes the smallest errors are the hardest - wo
 st.write("👉 Special characters - this will highlight as a 'misspelling' if it sees a special character used")
 
 st.write("How to use: ")
-st.write("input a CSV with your Keyword and Search Volume columns. This should then populate into a table below. You can then use the similarity threshold to determine how similar you want the keywords to be that are listed. Also - ensure that any branded or product names (or anything you want to be excluded from spellcheck) are listed in the ignore list, using commas between each. Once your happy, export the table below!")
+st.write("1. Input a CSV with your Keyword and Search Volume columns. This should then populate into a table below.")
+st.write("2. You can then use the similarity threshold to determine how similar you want the keywords to be that are listed.")
+st.write("3. Ensure that any branded or product names (or anything you want to be excluded from spellcheck) are listed in the ignore list, using commas between each.")
+st.write("4. Select the desired delimiter - this is set to default ","")
+st.write("5. Once your happy and the table has populated below, export the table below!")
 
 st.write("Important notes:")
 st.write("- Please save csv as CSV UTF-8 (delimited)")
