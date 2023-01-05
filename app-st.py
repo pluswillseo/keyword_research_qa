@@ -72,7 +72,7 @@ st.sidebar.text("")
 
 st.sidebar.title("Filter out keyword that only differ by 's' included")
 
-use_nickname = st.sidebar.checkbox("Filter without duplicate with 's' columns?", value=False)
+duplicate_s = st.sidebar.checkbox("Filter without duplicate with 's' columns?", value=False)
 
 # Read the input csv file
 uploaded_file = st.file_uploader("Choose a CSV file with keywords and SV to process - this should have keywords in first column, and search volume in the second", type='csv')
@@ -220,7 +220,7 @@ if uploaded_file is not None:
         csv = df.to_csv(index=False)
         st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
         st.table(df)
-
+    
     else:
         # Filter the table by the selected categories
         # create an empty list to store the rows that match the filter criteria
@@ -232,7 +232,12 @@ if uploaded_file is not None:
             if any(item is row['Misspelling or special character'] for item in selected_categories):
                 # if it does, append the row to the filtered_rows list
                 filtered_rows.append(row)
-
+                
+        for index, row in df.iterrows():
+            # check if the fruit column contains any items from the list
+            if row["Duplicate with 's'"] == "false":
+                # if it does, append the row to the filtered_rows list
+                filtered_rows.append(row)        
     # create a new DataFrame using the filtered rows
                 filtered_df = pd.DataFrame(filtered_rows)
         
