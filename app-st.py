@@ -192,6 +192,7 @@ if uploaded_file is not None:
     
     placeholder.progress(100)
     st.empty().success('Completed the table!')
+    st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
 
 #all new below
 
@@ -221,6 +222,5 @@ if uploaded_file is not None:
 
         #csv = df.to_csv(index=False)
    
-    st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
     
     
