@@ -69,8 +69,6 @@ st.sidebar.title("Filter misspellings")
 selected_categories = st.sidebar.multiselect("Select categories to filter by:", ["", "Potential misspelling or error"])
 
 st.sidebar.text("")
-st.sidebar.text("")
-st.sidebar.text("")
 
 use_nickname = st.sidebar.checkbox("Filter without duplicate with 's' columns?", value=False)
 
