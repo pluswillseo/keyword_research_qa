@@ -192,13 +192,14 @@ if uploaded_file is not None:
     
     placeholder.progress(100)
     st.empty().success('Completed the table!')
-    st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
 
 #all new below
 
     if selected_categories == []:   # & filter_word == []:
-        st.table(df)
         csv = df.to_csv(index=False)
+        st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
+        st.table(df)
+
     else:
         # Filter the table by the selected categories
         # create an empty list to store the rows that match the filter criteria
@@ -214,8 +215,10 @@ if uploaded_file is not None:
     # create a new DataFrame using the filtered rows
                 filtered_df = pd.DataFrame(filtered_rows)
         
-        st.table(filtered_df)
         csv = filtered_df.to_csv(index=False)
+        st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
+        
+        st.table(filtered_df)
         
         # Display the DataFrame as a table
         #st.dataframe(df)
