@@ -153,7 +153,22 @@ if uploaded_file is not None:
 
     # Create a pandas DataFrame to store the results
     df = pd.DataFrame(data, columns=["Keyword", "Search Volume", "Similar Keywords"])
-        
+    
+    # Create a new column with modified versions of the Keyword column
+    df["Keyword_modified"] = df["Keyword"].apply(lambda x: x + "s")
+    
+    #create new column
+    df["Duplicate with 's'"] = False
+
+    keywords = df["Keyword"].tolist()
+    
+    #iterate through each keyword
+    for keyword in keywords:
+        mask = df["Keyword_modified"].isin([keyword])
+        df.loc[mask, "Duplicate with 's'"] = True
+    # drop the column you no longer need
+    df = df.drop("Keyword_modified", axis = 1)
+    
     keywords = df['Keyword']
     placeholder.progress(70)
 
