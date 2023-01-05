@@ -70,6 +70,8 @@ selected_categories = st.sidebar.multiselect("Select categories to filter by:", 
 
 st.sidebar.text("")
 
+st.sidebar.title("Filter out keyword that only differ by 's' included")
+
 use_nickname = st.sidebar.checkbox("Filter without duplicate with 's' columns?", value=False)
 
 # Read the input csv file
