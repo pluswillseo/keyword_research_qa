@@ -68,6 +68,8 @@ st.sidebar.title("Filter misspellings")
 # Add a filter to the sidebar that allows users to select multiple categories
 selected_categories = st.sidebar.multiselect("Select categories to filter by:", ["", "Potential misspelling or error"])
 
+use_nickname = st.sidebar.checkbox("Filter without duplicate with 's' columns?", value=True)
+
 # Read the input csv file
 uploaded_file = st.file_uploader("Choose a CSV file with keywords and SV to process - this should have keywords in first column, and search volume in the second", type='csv')
 
