@@ -216,7 +216,7 @@ if uploaded_file is not None:
 
 #all new below
 
-    if selected_categories == []:   # & filter_word == []:
+    if selected_categories == [] & duplicate_s == 'false':
         csv = df.to_csv(index=False)
         st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
         st.table(df)
@@ -232,12 +232,10 @@ if uploaded_file is not None:
             if any(item is row['Misspelling or special character'] for item in selected_categories):
                 # if it does, append the row to the filtered_rows list
                 filtered_rows.append(row)
-                
-        for index, row in df.iterrows():
             # check if the fruit column contains any items from the list
-            if row["Duplicate with 's'"] == "false":
+                if row["Duplicate with 's'"] == "false":
                 # if it does, append the row to the filtered_rows list
-                filtered_rows.append(row)        
+                    filtered_rows.append(row)        
     # create a new DataFrame using the filtered rows
                 filtered_df = pd.DataFrame(filtered_rows)
         
