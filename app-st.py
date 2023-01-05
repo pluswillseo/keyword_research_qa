@@ -216,7 +216,7 @@ if uploaded_file is not None:
 
 #all new below
 
-    if selected_categories == [] and duplicate_s == False:
+    if selected_categories == []:
         csv = df.to_csv(index=False)
         st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
         st.table(df)
