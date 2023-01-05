@@ -226,14 +226,14 @@ if uploaded_file is not None:
         # create an empty list to store the rows that match the filter criteria
         filtered_rows = []
 
-    # iterate over the rows in the DataFrame
+        # iterate over the rows in the DataFrame
         for index, row in df.iterrows():
             # check if the fruit column contains any items from the list
             if any(item is row['Misspelling or special character'] for item in selected_categories):
                 # if it does, append the row to the filtered_rows list
                 filtered_rows.append(row)
      
-    # create a new DataFrame using the filtered rows
+                # create a new DataFrame using the filtered rows
                 filtered_df = pd.DataFrame(filtered_rows)
         
         csv = filtered_df.to_csv(index=False)
