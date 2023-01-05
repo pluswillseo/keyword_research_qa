@@ -63,14 +63,14 @@ st.write('The current selected delimiter is "', dl, '"')
 st.text("")
 
 # Add a sidebar to the app
-st.sidebar.title("Filter misspellings")
+st.sidebar.title("Filter misspellings (not currently working)")
 
 # Add a filter to the sidebar that allows users to select multiple categories
 selected_categories = st.sidebar.multiselect("Select categories to filter by:", ["", "Potential misspelling or error"])
 
 st.sidebar.text("")
 
-st.sidebar.title("Filter out keyword that only differ by 's' included")
+st.sidebar.title("Filter out keyword that only differ by 's' included (not currently working")
 
 duplicate_s = st.sidebar.checkbox("Filter without duplicate with 's' columns?", value=False)
 
