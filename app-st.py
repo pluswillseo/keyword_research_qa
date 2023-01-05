@@ -234,7 +234,7 @@ if uploaded_file is not None:
                 filtered_rows.append(row)
      
     # create a new DataFrame using the filtered rows
-                filtered_df = pd.DataFrame(filtered_rows)
+        filtered_df = pd.DataFrame(filtered_rows)
         
         csv = filtered_df.to_csv(index=False)
         st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
