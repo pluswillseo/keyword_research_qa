@@ -217,7 +217,7 @@ if uploaded_file is not None:
 #all new below
     # Create a filtered dataframe using the selected filters
     if selected_categories and duplicate_s:
-        filtered_df = df[df['Misspelling or special character'].isin(selected_categories) & df["Duplicate with 's'"].isin(duplicate_s)]
+        filtered_df = df[(df['Misspelling or special character'].isin(selected_categories)) & (df["Duplicate with 's'"].isin(duplicate_s))]
     elif selected_categories:
         filtered_df = df[df['Misspelling or special character'].isin(selected_categories)]
     elif duplicate_s:
