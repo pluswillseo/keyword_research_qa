@@ -207,10 +207,14 @@ if uploaded_file is not None:
 #all new below
     # Create a filtered dataframe using the selected filters
     
-    st.write("Filter misspellings (not currently working)")
-    selected_categories = st.multiselect('Filter out misspellings/special characters', df['Misspelling or special character'].unique())
-    st.write("Filter out keyword that only differ by 's' included (not currently working")
-    duplicate_s = st.multiselect('Filter out non s duplicates with same search volume', df["Duplicate with 's'"].unique())
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.write("Filter misspellings (not currently working)")
+        selected_categories = st.multiselect('Filter out misspellings/special characters', df['Misspelling or special character'].unique())
+    with col2:
+        st.write("Filter out keyword that only differ by 's' included (not currently working")
+        duplicate_s = st.multiselect('Filter out non s duplicates with same search volume', df["Duplicate with 's'"].unique())
     
     if selected_categories and duplicate_s:
         filtered_df = df[(df['Misspelling or special character'].isin(selected_categories)) & (df["Duplicate with 's'"].isin(duplicate_s))]
