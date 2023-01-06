@@ -42,6 +42,16 @@ st.write("**- If you have a list of keywords in another language other than engl
 st.text("")
 st.text("")
 
+ignore_words = st.text_input("Add all words you want to ignore as part of the spell check, such as branded terms, product lines, etc.")
+
+st.text("")
+st.text("")
+
+sim_score = st.slider("What similarity score do you want to use for your dataset? The default is 96, however you can adapt as you see necessary between 90 and 100", min_value=90, max_value=100, value=96)
+
+st.text("")
+st.text("")
+
 dl = st.radio(
         "What delimiter are you using?",
         (",", ";", "\t", "|"),
@@ -61,16 +71,6 @@ st.text("")
 
 # Read the input csv file
 uploaded_file = st.file_uploader("Choose a CSV file with keywords and SV to process - this should have keywords in first column, and search volume in the second", type='csv')
-
-st.text("")
-st.text("")
-
-ignore_words = st.text_input("Add all words you want to ignore as part of the spell check, such as branded terms, product lines, etc.")
-
-st.text("")
-st.text("")
-
-sim_score = st.slider("What similarity score do you want to use for your dataset? The default is 96, however you can adapt as you see necessary between 90 and 100", min_value=90, max_value=100, value=96)
 
 if uploaded_file is not None:
     
