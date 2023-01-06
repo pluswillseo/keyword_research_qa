@@ -69,14 +69,14 @@ st.sidebar.title("Filter misspellings (not currently working)")
 # Add a filter to the sidebar that allows users to select multiple categories
 #selected_categories = st.sidebar.multiselect("Select categories to filter by:", ["", "Potential misspelling or error"])
 
-selected_categories = st.sidebar.selectbox('Filter out misspellings/special characters', ["", "Potential misspelling or error"])
+selected_categories = st.sidebar.selectbox('Filter out misspellings/special characters', ["", "Potential misspelling or error"], index=-1)
 
 st.sidebar.text("")
 
 st.sidebar.title("Filter out keyword that only differ by 's' included (not currently working")
 
 #duplicate_s = st.sidebar.checkbox("Filter without duplicate with 's' columns?", value=False)
-duplicate_s = st.sidebar.selectbox('Filter out non s duplicates with same search volume', ['true','false'])
+duplicate_s = st.sidebar.selectbox('Filter out non s duplicates with same search volume', ['true','false'], index=-1)
 
 
 # Read the input csv file
