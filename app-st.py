@@ -213,7 +213,7 @@ if uploaded_file is not None:
 
     st.write("Filter out keyword that only differ by 's' included (not currently working")
 
-    duplicate_s = st.multiselect('Filter out non s duplicates with same search volume', [true,false])
+    duplicate_s = st.multiselect('Filter out non s duplicates with same search volume', df["Duplicate with 's'"].unique())
     
     if selected_categories and duplicate_s:
         filtered_df = df[(df['Misspelling or special character'].isin(selected_categories)) & (df["Duplicate with 's'"].isin(duplicate_s))]
