@@ -215,8 +215,12 @@ if uploaded_file is not None:
     st.empty().success('Completed the table!')
 
 #all new below
-    
-    filtered_df = df[(df['Misspelling or special character'] == selected_categories) & (df["Duplicate with 's'"] == duplicate_s)]
+    # Create a filtered dataframe using the selected filters
+    if filter1 and filter2:
+        filtered_df = df[df['Misspelling or special character'].isin(selected_categories) & df["Duplicate with 's'"].isin(duplicate_s)]
+    else:
+        filtered_df = df
+
     csv = filtered_df.to_csv(index=False)
     st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
     st.table(filtered_df)
