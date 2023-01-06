@@ -67,13 +67,17 @@ st.text("")
 st.sidebar.title("Filter misspellings (not currently working)")
 
 # Add a filter to the sidebar that allows users to select multiple categories
-selected_categories = st.sidebar.multiselect("Select categories to filter by:", ["", "Potential misspelling or error"])
+#selected_categories = st.sidebar.multiselect("Select categories to filter by:", ["", "Potential misspelling or error"])
+
+selected_categories = st.selectbox('Filter out misspellings/special characters', df['Misspelling or special character'].unique())
 
 st.sidebar.text("")
 
 st.sidebar.title("Filter out keyword that only differ by 's' included (not currently working")
 
-duplicate_s = st.sidebar.checkbox("Filter without duplicate with 's' columns?", value=False)
+#duplicate_s = st.sidebar.checkbox("Filter without duplicate with 's' columns?", value=False)
+duplicate_s = st.selectbox('Filter out non s duplicates with same search volume', df["Duplicate with 's'"].unique())
+
 
 # Read the input csv file
 uploaded_file = st.file_uploader("Choose a CSV file with keywords and SV to process - this should have keywords in first column, and search volume in the second", type='csv')
@@ -207,40 +211,39 @@ if uploaded_file is not None:
 
     placeholder.progress(90)
                 
-# open the CSV file and write the updated keywords
-#with open('output.csv', 'w', newline="") as csvfile:
-#   writer = csv.writer(csvfile)
-#   writer.writerows(keywords)
-    
     placeholder.progress(100)
     st.empty().success('Completed the table!')
 
 #all new below
-
-    if selected_categories == []:
-        csv = df.to_csv(index=False)
-        st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
-        st.table(df)
     
-    else:
+    filtered_df = df[(df['column1'] == filter1) & (df['column2'] == filter2)]
+    csv = filtered_df.to_csv(index=False)
+    st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
+    
+#    if selected_categories == []:
+#        csv = df.to_csv(index=False)
+#        st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
+#        st.table(df)
+    
+#    else:
         # Filter the table by the selected categories
         # create an empty list to store the rows that match the filter criteria
-        filtered_rows = []
+#        filtered_rows = []
 
         # iterate over the rows in the DataFrame
-        for index, row in df.iterrows():
+#        for index, row in df.iterrows():
             # check if the fruit column contains any items from the list
-            if any(item is row['Misspelling or special character'] for item in selected_categories):
+#            if any(item is row['Misspelling or special character'] for item in selected_categories):
                 # if it does, append the row to the filtered_rows list
-                filtered_rows.append(row)
+#                filtered_rows.append(row)
                 # create a new DataFrame using the filtered rows
-                filtered_df = pd.DataFrame(filtered_rows)
-            filtered_df
+#                filtered_df = pd.DataFrame(filtered_rows)
+#            filtered_df
         
-        csv = filtered_df.to_csv(index=False)
-        st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
+#        csv = filtered_df.to_csv(index=False)
+#        st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
         
-        st.table(filtered_df)
+#        st.table(filtered_df)
         
         # Display the DataFrame as a table
         #st.dataframe(df)
