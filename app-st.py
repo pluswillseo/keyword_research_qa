@@ -64,20 +64,10 @@ st.write('The current selected delimiter is "', dl, '"')
 st.text("")
 
 # Add a sidebar to the app
-st.sidebar.title("Filter misspellings (not currently working)")
+#st.sidebar.title("Filter misspellings (not currently working)")
 
 # Add a filter to the sidebar that allows users to select multiple categories
 #selected_categories = st.sidebar.multiselect("Select categories to filter by:", ["", "Potential misspelling or error"])
-
-selected_categories = st.sidebar.multiselect('Filter out misspellings/special characters', ["", "Potential misspelling or error"])
-
-st.sidebar.text("")
-
-st.sidebar.title("Filter out keyword that only differ by 's' included (not currently working")
-
-#duplicate_s = st.sidebar.checkbox("Filter without duplicate with 's' columns?", value=False)
-duplicate_s = st.sidebar.multiselect('Filter out non s duplicates with same search volume', ['true','false'])
-
 
 # Read the input csv file
 uploaded_file = st.file_uploader("Choose a CSV file with keywords and SV to process - this should have keywords in first column, and search volume in the second", type='csv')
@@ -216,8 +206,15 @@ if uploaded_file is not None:
 
 #all new below
     # Create a filtered dataframe using the selected filters
+    
+    selected_categories = st.multiselect('Filter out misspellings/special characters', ["", "Potential misspelling or error"])
+
+    st.write("Filter out keyword that only differ by 's' included (not currently working")
+
+    duplicate_s = st.multiselect('Filter out non s duplicates with same search volume', ['true','false'])
+    
     if selected_categories and duplicate_s:
-        filtered_df = df[(df['Misspelling or special character'].isin(selected_categories)) and (df["Duplicate with 's'"].isin(duplicate_s))]
+        filtered_df = df[(df['Misspelling or special character'].isin(selected_categories)) & (df["Duplicate with 's'"].isin(duplicate_s))]
     elif selected_categories:
         filtered_df = df[df['Misspelling or special character'].isin(selected_categories)]
     elif duplicate_s:
