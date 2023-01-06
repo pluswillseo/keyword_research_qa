@@ -210,10 +210,12 @@ if uploaded_file is not None:
     col1, col2 = st.columns(2)
     
     with col1:
-        st.write("Filter misspellings (not currently working)")
+        st.header("Filter misspellings")
+        st.write("Once you've reviewed the output and you're happy that you no longer need any of the keywords marked misspelled, then use this filter to remove them")
         selected_categories = st.multiselect('Filter out misspellings/special characters', df['Misspelling or special character'].unique())
     with col2:
-        st.write("Filter out keyword that only differ by 's' included (not currently working")
+        st.header("Filter out keyword that only differ by 's' included")
+        st.write("This table marks the non 's' version if there are 2 duplicate keywords with the same search volume, but one including 's', this document will mark one of the 2 as True, meaning you can easily filter it out.")
         duplicate_s = st.multiselect('Filter out non s duplicates with same search volume', df["Duplicate with 's'"].unique())
     
     if selected_categories and duplicate_s:
