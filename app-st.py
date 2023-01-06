@@ -216,7 +216,7 @@ if uploaded_file is not None:
 
 #all new below
     
-    filtered_df = df[(df['column1'] == filter1) & (df['column2'] == filter2)]
+    filtered_df = df[(df['Misspelling or special character'] == selected_categories) & (df["Duplicate with 's'"] == duplicate_s)]
     csv = filtered_df.to_csv(index=False)
     st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
     
