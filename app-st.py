@@ -166,7 +166,11 @@ if uploaded_file is not None:
     #iterate through each keyword
     for keyword in keywords:
         mask = df["Keyword_modified"].isin([keyword])
-        df.loc[mask, "Duplicate with 's'"] = True
+        duplicates = df[mask]
+        if duplicates.shape[0] >1:
+            search_volumes = dupliucates['Search Volume'].tolist()
+            if len(set(search_volumes)) == 1:
+                df.loc[mask, "Duplicate with 's'"] = True
     # drop the column you no longer need
     df = df.drop("Keyword_modified", axis = 1)
     
