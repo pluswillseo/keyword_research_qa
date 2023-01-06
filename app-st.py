@@ -161,15 +161,13 @@ if uploaded_file is not None:
     #create new column
     df["Duplicate with 's'"] = False
     
-    def mark_duplicates(group):
-        if group.shape[0] > 1:
-            # check if search volumes are the same
-            search_volumes = group['Search Volume'].tolist()
-            if len(set(search_volumes)) == 1:
-                group['Duplicate with "s"'] = True
-        return group
-
-    df = df.groupby(['Keyword_modified', 'Search Volume']).apply(mark_duplicates)
+    keywords = df["Keyword"].tolist()
+    
+    #iterate through each keyword
+    for keyword in keywords:
+        mask = df["Keyword_modified"].isin([keyword])
+        df.loc[mask, "Duplicate with 's'"] = True
+        
     # drop the column you no longer need
     df = df.drop("Keyword_modified", axis = 1)
     
