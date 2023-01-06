@@ -177,28 +177,33 @@ if uploaded_file is not None:
 
     # initialize the spell checker
     spell_checker = SpellChecker()
-
-    # define a regular expression to match any special characters
-    regex = r'[^A-Za-z0-9 ]'
-        
-# define a list of words to ignore (e.g. brand names, product names, etc.)
-    ignore_list = [k.strip() for k in ignore_words.split(",")]
-    placeholder.progress(80)
-# iterate over the keywords and check for any misspellings or special characters
-    for keyword in keywords:
-    # split the keyword into individual words
-        words = keyword.split()
     
-    # iterate over the words and check for any misspellings or special characters
-        for word in words:
-            # skip any words that are in the ignore list
-            if word in ignore_list:
-                continue
-        
-            if len(spell_checker.unknown([word])) > 0 or re.search(regex, word):
-                df.loc[df['Keyword'] == keyword, 'Misspelling or special character'] = "Potential misspelling or error"
-                break
+    @st.cache
+    def check_misspellings(df, ignore_list):
 
+        # define a regular expression to match any special characters
+        regex = r'[^A-Za-z0-9 ]'
+
+        # iterate over the keywords and check for any misspellings or special characters
+        for keyword in keywords:
+
+        # split the keyword into individual words
+            words = keyword.split()
+
+        # iterate over the words and check for any misspellings or special characters
+            for word in words:
+                # skip any words that are in the ignore list
+                if word in ignore_list:
+                    continue
+
+                if len(spell_checker.unknown([word])) > 0 or re.search(regex, word):
+                    df.loc[df['Keyword'] == keyword, 'Misspelling or special character'] = "Potential misspelling or error"
+                    break
+        return df
+    
+    # define a list of words to ignore (e.g. brand names, product names, etc.)
+    ignore_list = [k.strip() for k in ignore_words.split(",")]
+    df = check_misspellings(df, ignore_list)
     placeholder.progress(90)
                 
     placeholder.progress(100)
@@ -229,37 +234,4 @@ if uploaded_file is not None:
 
     csv = filtered_df.to_csv(index=False)
     st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
-    st.table(filtered_df)
-    
-#    if selected_categories == []:
-#        csv = df.to_csv(index=False)
-#        st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
-#        st.table(df)
-    
-#    else:
-        # Filter the table by the selected categories
-        # create an empty list to store the rows that match the filter criteria
-#        filtered_rows = []
-
-        # iterate over the rows in the DataFrame
-#        for index, row in df.iterrows():
-            # check if the fruit column contains any items from the list
-#            if any(item is row['Misspelling or special character'] for item in selected_categories):
-                # if it does, append the row to the filtered_rows list
-#                filtered_rows.append(row)
-                # create a new DataFrame using the filtered rows
-#                filtered_df = pd.DataFrame(filtered_rows)
-#            filtered_df
-        
-#        csv = filtered_df.to_csv(index=False)
-#        st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
-        
-#        st.table(filtered_df)
-        
-        # Display the DataFrame as a table
-        #st.dataframe(df)
-
-        #csv = df.to_csv(index=False)
-   
-    
-    
+    st.table(filtered_df) 
