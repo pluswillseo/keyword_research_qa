@@ -178,7 +178,6 @@ if uploaded_file is not None:
     # initialize the spell checker
     spell_checker = SpellChecker()
     
-    @st.cache
     def check_misspellings(df, ignore_list):
 
         # define a regular expression to match any special characters
