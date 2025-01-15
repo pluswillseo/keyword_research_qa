@@ -205,12 +205,8 @@ if uploaded_file is not None:
                     continue
 
                 if len(spell_checker.unknown([word])) > 0 or re.search(regex, word, re.UNICODE):
-                    # Check if the column already has a value
-                    existing_value = df.loc[df['Keyword'] == keyword, 'Misspelling or special character']
-                    if existing_value.isna().all():  # First issue (column is empty or NaN)
-                        df.loc[df['Keyword'] == keyword, 'Misspelling or special character'] = word
-                    else:  # Append with ", " if there is already a value
-                        df.loc[df['Keyword'] == keyword, 'Misspelling or special character'] += ", " + word                    
+                    df.loc[df['Keyword'] == keyword, 'Misspelling or special character'] += word + ", "      
+                    
         return df
     
     # define a list of words to ignore (e.g. brand names, product names, etc.)
