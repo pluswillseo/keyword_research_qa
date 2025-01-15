@@ -44,6 +44,9 @@ st.text("")
 
 ignore_words = st.text_input("Add all words you want to ignore as part of the spell check, such as branded terms, product lines, etc.")
 
+st.text("")
+st.text("")
+
 lang_select = st.text_input("Select what language you want to use for the misspelling review - en, es, fr, pt, de, it, ru, ar, eu, lv, nl")
 
 st.text("")
@@ -179,7 +182,10 @@ if uploaded_file is not None:
     df['Misspelling or special character'] = ""
 
     # initialize the spell checker
-    spell_checker = SpellChecker()
+    if lang_select = "en"
+        spell_checker = SpellChecker()
+    else
+        spell_checker = SpellChecker(language=lang_select)
     
     def check_misspellings(df, ignore_list):
 
