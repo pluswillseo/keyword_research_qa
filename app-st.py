@@ -182,7 +182,7 @@ if uploaded_file is not None:
     df['Misspelling or special character'] = ""
 
     # initialize the spell checker
-    if lang_select = "en"
+    if lang_select == "en"
         spell_checker = SpellChecker()
     else
         spell_checker = SpellChecker(language=lang_select)
