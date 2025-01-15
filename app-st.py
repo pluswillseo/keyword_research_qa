@@ -190,7 +190,7 @@ if uploaded_file is not None:
     def check_misspellings(df, ignore_list):
 
         # define a regular expression to match any special characters
-        regex = r'[^A-Za-z0-9 ]'
+        regex = r'[^\w\s]'
 
         # iterate over the keywords and check for any misspellings or special characters
         for keyword in keywords:
@@ -204,7 +204,7 @@ if uploaded_file is not None:
                 if word in ignore_list:
                     continue
 
-                if len(spell_checker.unknown([word])) > 0 or re.search(regex, word):
+                if len(spell_checker.unknown([word])) > 0 or re.search(regex, word, re.UNICODE):
                     df.loc[df['Keyword'] == keyword, 'Misspelling or special character'] = "Potential misspelling or error"
                     break
         return df
