@@ -205,7 +205,8 @@ if uploaded_file is not None:
                     continue
 
                 if len(spell_checker.unknown([word])) > 0 or re.search(regex, word, re.UNICODE):
-                    df.loc[df['Keyword'] == keyword, 'Misspelling or special character'] = word
+                    df.loc[df['Keyword'] == keyword, 'Misspelling or special character'] = \
+                        df.loc[df['Keyword'] == keyword, 'Misspelling or special character'].astype(str) + ', ' + word
                     break
         return df
     
