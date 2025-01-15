@@ -44,7 +44,7 @@ st.text("")
 
 ignore_words = st.text_input("Add all words you want to ignore as part of the spell check, such as branded terms, product lines, etc.")
 
-lang_select st.text_input("Select what language you want to use for the misspelling review - en, es, fr, pt, de, it, ru, ar, eu, lv, nl
+lang_select = st.text_input("Select what language you want to use for the misspelling review - en, es, fr, pt, de, it, ru, ar, eu, lv, nl
 
 st.text("")
 st.text("")
