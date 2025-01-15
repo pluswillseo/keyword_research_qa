@@ -206,7 +206,7 @@ if uploaded_file is not None:
 
                 if len(spell_checker.unknown([word])) > 0 or re.search(regex, word, re.UNICODE):
                     df.loc[df['Keyword'] == keyword, 'Misspelling or special character'] += word
-                    break
+                    
         return df
     
     # define a list of words to ignore (e.g. brand names, product names, etc.)
