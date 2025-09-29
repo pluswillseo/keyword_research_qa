@@ -242,4 +242,5 @@ if uploaded_file is not None:
 
     csv = filtered_df.to_csv(index=False)
     st.download_button('Download Table as CSV', csv, file_name = 'output.csv', mime='text/csv')
-    st.table(filtered_df) 
+    st.table(pd.filtered_df.head(1000)) 
+
